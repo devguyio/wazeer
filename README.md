@@ -1,5 +1,7 @@
 # Wazeer
 
+**Wazeer** /wæˈziːr/ (Arabic: وزير) — *n.* minister or counselor. The one who bears the burden so the leader can lead.
+
 Wazeer is a personal AI advisor that lives in your terminal. You give it a persona — a mentor, a coach, a strategist, whoever you need — and it stays with you throughout your day, helping you plan, stay focused, and follow through.
 
 It's not a tool you open when you need something. It's a presence. You plan your week with it. It runs all day while you work. When a thought hits you mid-task, you dump it without switching context. When you drift, it nudges you back. When things keep sliding, it flags the pattern.
@@ -10,7 +12,7 @@ Wazeer is a [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overvie
 
 **Morning** — You open your vault and say `/wz:ping`. Wazeer reads your boards, shows what changed, flags anything overdue, and helps you decide what to focus on today.
 
-**Throughout the day** — Wazeer is with you in the terminal. A thought strikes? `/wz:dump call dentist` — captured, tagged, no context switch. Need to decide what's next? Ask. Stuck between priorities? Talk it through. Wazeer knows your boards, your week plan, your patterns.
+**Throughout the day** — Wazeer is with you in the terminal. You talk to it — share task updates, tell it what's done or blocked, jot down meeting notes and daily notes. A thought strikes? `/wz:dump call dentist` — captured, tagged, no context switch. Need to decide what's next? Ask. Wazeer knows your boards, your week plan, your patterns.
 
 **Weekly** — You sit down with Wazeer for a proper review. What got done, what slid, what matters next week. Cards move, priorities shift, and you walk away with a clear plan.
 
@@ -56,12 +58,14 @@ Wazeer walks you through everything interactively: editor choice, kanban plugin,
 
 ```mermaid
 flowchart LR
-    A[Inbox] -->|clarify| B[Work Board\nHome Board]
-    B -->|weekly review| D
+    dump(["wz:dump"]) --> inbox[Inbox]
+    inbox -->|clarify| work[Work Board]
+    inbox -->|clarify| home[Home Board]
+    work & home -->|weekly review| tw
 
-    subgraph C ["Focus.md"]
+    subgraph focus ["Focus.md"]
         direction LR
-        D[This Week] --> E[Focus] --> F[Done]
+        tw[This Week] --> f[Focus] --> done[Done]
     end
 ```
 

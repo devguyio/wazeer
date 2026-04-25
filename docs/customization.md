@@ -65,37 +65,42 @@ This is opt-in. If you don't uncomment it, Wazeer uses neutral, time-appropriate
 
 You can also adjust the Wazeer persona to reflect your own faith tradition or remove faith references entirely - the persona section in `CLAUDE.md` is fully editable.
 
-## Persona Adjustments
+## The Persona
 
-The Wazeer persona is defined in the "The Wazeer Persona" section of `CLAUDE.md`. You can modify:
+The persona is defined in the "The Wazeer Persona" section of your vault's `CLAUDE.md`. This is who Wazeer is when it talks to you — and you can make it anyone.
 
-### Core Identity
+### Writing Your Own
 
-Change the background to match what's useful for you:
+A persona has three parts:
+
+1. **Identity** — who is this advisor? What's their background, expertise, perspective?
+2. **Style** — how do they communicate? Direct or gentle? Formal or casual? Dry wit or warm encouragement?
+3. **Focus** — what do they push you on? Execution? Strategy? Work-life balance? Growth?
+
+You can write this however you want. Here's an example that's very different from the default:
 
 ```markdown
 ### Core Identity
 
-- **Hands-On Technical Expert**: Deeply technical, coding almost daily.
-- **Balanced Leader**: Mastered the balance between individual contributor work and leadership.
-- **Financial Literacy**: Knowledgeable about personal finance and wealth building.
-- **Neurodiversity Specialist**: Expert in productivity for neurodivergent professionals.
-```
+- **Gentle Coach**: Patient, encouraging, celebrates small wins
+- **Mindfulness Practitioner**: Values presence and intentional focus over raw productivity
+- **Neurodiversity Advocate**: Designs systems around how your brain actually works
 
 ### Interaction Style
 
-Adjust the communication style:
-
-```markdown
-**Interaction Style:**
-- Collaborate, don't preach
-- Accountability partner
-- High signal, no fluff
-- Minimize sycophancy
-- JARVIS-style: competent, brief, dry wit allowed
+- Warm, supportive, never judgmental
+- Ask questions before suggesting changes
+- Frame accountability as care, not pressure
+- Celebrate progress, not just completion
 ```
 
-If you want a warmer tone, remove "Minimize sycophancy" and "JARVIS-style". If you want it even more direct, add "No pleasantries - get to the point immediately."
+### Adjusting the Default
+
+The default persona is a veteran CTO — direct, pragmatic, dry wit. If you like the base but want to adjust:
+
+- **Warmer**: Remove "Minimize sycophancy" and "JARVIS-style"
+- **More direct**: Add "No pleasantries — get to the point immediately"
+- **Different expertise**: Change the Core Identity bullets to match what's useful for you
 
 ## Custom Tags
 
@@ -146,16 +151,9 @@ For example, to add a `References/` folder for long-lived reference material:
 
 ## Board Format
 
-Your board's markdown format was learned during setup and saved to `_wazeer/board-format.md`. If you change kanban plugins or editors, you can re-learn the format:
+Your board's markdown format was learned during setup. If you change kanban plugins or editors, you can re-learn the format:
 
 1. Create a sample board with the new plugin
 2. Tell Wazeer to "read and learn this board format"
-3. Wazeer updates `_wazeer/board-format.md` and recreates boards if needed
+3. Wazeer updates its internal format reference and recreates boards if needed
 
-## Git Integration
-
-Wazeer uses git diffs to detect changes between pings. For best results:
-
-- Commit regularly (the Obsidian Git plugin can auto-commit)
-- Use descriptive commit messages or auto-generated timestamps
-- Don't worry about clean history - this is a knowledge base, not a codebase

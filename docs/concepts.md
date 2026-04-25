@@ -73,7 +73,7 @@ Rich cards always get a companion note at `Projects/<SLUG>/<SLUG>-XX Title.md` w
 - Production issues reported via chat
 - Epics with multiple sub-tasks
 
-The exact markdown syntax for all card types depends on your kanban plugin and is documented in `_wazeer/board-format.md`.
+The exact markdown syntax for all card types depends on your kanban plugin. Wazeer learns the format during setup and handles it for you.
 
 ## Tags
 
@@ -90,7 +90,7 @@ Define your own domain tags based on your projects and areas of work.
 
 The most important ritual. Do this Sunday or Monday morning.
 
-1. **Process the inbox** (`_wazeer/Inbox.md`) - clarify each item, move to boards
+1. **Process the inbox** - ask Wazeer to go through the inbox with you, clarify each item, move to boards
 2. **Review Work Board and Home Board** - are projects current? Do they have next actions?
 3. **Clear Done columns** - archive completed items
 4. **Build the week** - pull items from Next Actions to Focus.md "This Week"
@@ -98,13 +98,13 @@ The most important ritual. Do this Sunday or Monday morning.
 
 ## Archiving
 
-Completed items are never deleted. They move from Done to Archive. Each board has an Archive section. The exact format depends on your kanban plugin — see `_wazeer/board-format.md`.
+Completed items are never deleted. They move from Done to Archive. Each board has an Archive section. Wazeer handles the format based on your kanban plugin.
 
 Wazeer moves items from Done to Archive during `/wz:ping` reconciliation. Archives are cleaned quarterly.
 
 ## Status.md
 
-`_wazeer/Status.md` is Wazeer's synthesized view of your entire GTD system. You read it; Wazeer writes it. It includes:
+Status.md is Wazeer's internal state — a synthesized view of your entire GTD system. Wazeer writes and reads it during pings to track what's going on. It includes:
 
 - Current focus and blockers
 - Work and personal project tables
@@ -158,27 +158,3 @@ vault-root/
 
 Three lifecycle states: `Projects/` (active), `Backlog/` (parked), `_archive/` (done). Every project is a named subfolder - never loose files. Subfolders under `Projects/` match your slug prefixes and are auto-created when Wazeer makes companion notes.
 
-## The `/loop` Integration
-
-`/loop` is a Claude Code built-in command that runs any prompt or slash command on a recurring interval. It is session-only: the loop dies when Claude exits and auto-expires after 7 days regardless.
-
-### Interval syntax
-
-| Interval | Meaning |
-|----------|---------|
-| `5m` | Every 5 minutes |
-| `30m` | Every 30 minutes |
-| `1h` | Every hour |
-| `2h` | Every 2 hours |
-
-### Recommended setup
-
-```
-/loop 1h /wz:ping
-```
-
-Hourly check-ins during work are the sweet spot: frequent enough to keep boards and Status.md fresh, infrequent enough to not interrupt deep work.
-
-### The `wz` alias
-
-Rather than remembering to set up `/loop` every time you start Claude, use the `wz` shell alias. It starts Claude Code inside the vault, checks whether a recurring ping is already scheduled, sets one up if not (using the interval from the Ping Schedule config in `CLAUDE.md`), and runs an immediate `/wz:ping`. See [Getting Started - Quick Launch](getting-started.md#quick-launch) for setup instructions.
