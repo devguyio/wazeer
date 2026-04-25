@@ -1,0 +1,16 @@
+{
+  "name": "wazeer",
+  "owner": {
+    "name": "devguyio"
+  },
+  "metadata": {
+    "description": "Personal GTD mentor and operations strategist — Kanban boards, brain dump capture, vault reconciliation, and accountability."
+  },
+  "plugins": [
+    {
+      "name": "wz",
+      "source": "./plugins/wz",
+      "description": "Personal GTD mentor, coach, and operations strategist. Works with Obsidian, Neovim, or any markdown editor."
+    }
+  ]
+}

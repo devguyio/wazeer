@@ -1,0 +1,10 @@
+{
+  "name": "wz",
+  "description": "Wazeer — personal GTD mentor and operations strategist. Maintains Kanban boards in your preferred editor (Obsidian, Neovim, or any markdown editor), tracks work, captures brain dumps, and keeps you accountable.",
+  "version": "1.0.0",
+  "author": {
+    "name": "devguyio"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["gtd", "productivity", "obsidian", "kanban", "mentor"]
+}
