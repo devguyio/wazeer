@@ -1,22 +1,30 @@
 # Wazeer
 
-A personal GTD system powered by Claude Code. Wazeer turns Claude into your trusted advisor — a mentor, coach, and operations strategist who maintains your boards, tracks your work, captures brain dumps, and keeps you accountable.
+Wazeer is a personal AI advisor that lives in your terminal. You give it a persona — a mentor, a coach, a strategist, whoever you need — and it stays with you throughout your day, helping you plan, stay focused, and follow through.
 
-Install the plugin, create a directory, and say "let's setup wazeer using the wazeer-setup skill". Wazeer takes it from there.
+It's not a tool you open when you need something. It's a presence. You plan your week with it. It runs all day while you work. When a thought hits you mid-task, you dump it without switching context. When you drift, it nudges you back. When things keep sliding, it flags the pattern.
 
-## What It Does
+Wazeer is a [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) plugin. It manages your tasks through markdown boards in a local directory — your **vault** — works with whatever text editor you prefer, and keeps everything on your machine.
 
-- **GTD boards** - Three Kanban boards (Focus, Work, Home) with proper separation between planning and execution
-- **Smart reconciliation** - `/wz:ping` reads your vault, shows what changed, proposes updates, waits for your OK
-- **Zero-friction capture** - `/wz:dump buy milk` captures to inbox with AI-inferred metadata. Works from any project
-- **Rich card tracking** - Structured cards for bugs, escalations, or anything needing ongoing tracking, with companion notes and next-action lines
-- **Accountability** - Wazeer flags items that keep sliding, notes patterns (late nights, overload), and keeps the big picture so you can focus
-- **Vault hygiene** - Wazeer enforces folder structure during pings, catches strays, keeps visual clutter down
-- **Editor agnostic** - Works with Obsidian, Neovim, or any markdown editor. Learns your kanban plugin's format during setup
+## What a Day Looks Like
+
+**Morning** — You open your vault and say `/wz:ping`. Wazeer reads your boards, shows what changed, flags anything overdue, and helps you decide what to focus on today.
+
+**Throughout the day** — Wazeer is with you in the terminal. A thought strikes? `/wz:dump call dentist` — captured, tagged, no context switch. Need to decide what's next? Ask. Stuck between priorities? Talk it through. Wazeer knows your boards, your week plan, your patterns.
+
+**Weekly** — You sit down with Wazeer for a proper review. What got done, what slid, what matters next week. Cards move, priorities shift, and you walk away with a clear plan.
+
+## The Persona
+
+Wazeer takes on whatever persona fits your working style. During setup, you shape who your advisor is — tone, mentoring style, what it pushes you on, how direct it gets.
+
+The default is a **veteran CTO**: direct, pragmatic, dry wit — JARVIS, not Clippy. But this is just a starting point. Define your own, or adjust it anytime in your vault's `CLAUDE.md`.
+
+The persona isn't cosmetic. It shapes how Wazeer mentors you, what it flags, how hard it pushes, and what kind of guidance it offers.
 
 ## Quick Start
 
-Wazeer lives in a directory on your machine — your **vault**. This is where your boards, notes, and inbox live. Create it anywhere you like, start Claude Code, and install the plugin using Claude Code's `/plugin` skill. The setup skill then walks you through everything interactively.
+Wazeer lives in a directory on your machine — your **vault**. This is where your boards, notes, and inbox live. Create it anywhere you like, start Claude Code, and install the plugin.
 
 ```bash
 mkdir ~/path/to/your/vault && cd ~/path/to/your/vault
@@ -28,13 +36,13 @@ claude
 /plugin install wz@wazeer
 ```
 
-The install command presents a wizard — choose **"Install for you, in this repo only (local scope)"**. After you install and reload the plugin, use the setup skill by entering the following prompt:
+The install command presents a wizard — choose **"Install for you, in this repo only (local scope)"**. After you install and reload the plugin, start setup:
 
 ```
 let's setup wazeer using the wazeer-setup skill
 ```
 
-Wazeer walks you through everything interactively: editor choice, kanban plugin, profile, board customization, and a first ping.
+Wazeer walks you through everything interactively: editor choice, kanban plugin, persona, board customization, and a first ping.
 
 ## Skills
 
@@ -42,45 +50,29 @@ Wazeer walks you through everything interactively: editor choice, kanban plugin,
 |-------|-------------|
 | `/wz:ping` | Wake-up call. Reconcile vault state, propose board updates, refresh Status.md |
 | `/wz:ping fresh` | Full re-read, ignore git change detection |
-| `/wz:dump <thought>` | Your single inbox, from anywhere. Capture to vault no matter which project you're in |
+| `/wz:dump <thought>` | Capture to inbox from anywhere — works in any Claude Code session, not just the vault |
 
 ## How It Works
 
 ```mermaid
-flowchart TD
-    A[Brain / Daily Notes] --> B[_wazeer/Inbox.md]
-    D["/wz:dump"] --> B
-    B --> C[Clarify & Organize]
-    E["/wz:ping"] --> C
-    C --> F[Work Board.md]
-    C --> G[Home Board.md]
-    F --> H[Weekly Review]
-    G --> H
-    H --> I["Focus.md\nThis Week → Focus → Done"]
+flowchart LR
+    A[Inbox] -->|clarify| B[Work Board\nHome Board]
+    B -->|weekly review| D
+
+    subgraph C ["Focus.md"]
+        direction LR
+        D[This Week] --> E[Focus] --> F[Done]
+    end
 ```
 
 **Three boards, clear separation:**
-- **Focus.md** - What you're doing this week. Pull to Focus, complete to Done.
-- **Work Board.md** - Work project backlog. Clarified, not yet scheduled.
-- **Home Board.md** - Personal project backlog. Same structure.
+- **Focus.md** — What you're doing this week. Pull to Focus, complete to Done.
+- **Work Board.md** — Work project backlog. Clarified, not yet scheduled.
+- **Home Board.md** — Personal project backlog. Same structure.
 
 **Card types are yours to define.** Every card gets a short slug prefix (e.g. `TODO-01`, `REV-02`, `BUG-03`). Define categories that match how you think — the setup flow walks you through it.
 
-## The Persona
-
-Wazeer is opinionated about how it operates:
-
-- **Competent, brief, dry wit** - JARVIS, not Clippy
-- **No fluff, no sycophancy** - direct and pragmatic
-- **Action-oriented** - every conversation produces next steps
-- **Accountability-focused** - flags patterns, notes what keeps sliding
-- **System refinement over creation** - optimize what exists, don't reinvent
-
-The persona is fully configurable in your vault's `CLAUDE.md`. Make it yours.
-
-## Global `/wz:dump`
-
-During setup, Wazeer installs `/wz:dump` as a user-wide skill. This makes it available in every Claude Code session — not just inside the vault. Brain dumps happen everywhere; capture them without context switching.
+**Editor agnostic.** Works with Obsidian, Neovim, or any markdown editor. Wazeer learns your kanban plugin's format during setup and adapts to it.
 
 ## Documentation
 
