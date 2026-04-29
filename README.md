@@ -1,6 +1,6 @@
 # Wazeer
 
-**Wazeer** /wæˈziːr/ (Arabic: وزير) — *n.* minister or counselor. The one who bears the burden so the leader can lead.
+**Wazeer** /wæˈziːr/ (Arabic: وزير) — *n.* Arabic word for minister or counselor. The one who bears the burden so the leader can lead.
 
 Wazeer is a personal AI advisor that lives in your terminal. You give it a persona — a mentor, a coach, a strategist, whoever you need — and it stays with you throughout your day, helping you plan, stay focused, and follow through.
 
