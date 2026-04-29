@@ -8,6 +8,9 @@ It's not a tool you open when you need something. It's a presence. You plan your
 
 Wazeer is a [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) plugin. It manages your tasks through markdown boards in a local directory — your **vault** — works with whatever text editor you prefer, and keeps everything on your machine.
 
+<img width="2546" height="1522" alt="Screenshot-Wed Apr 29 12:14:33 PM CEST 2026" src="https://github.com/user-attachments/assets/e682e8d8-7559-412c-9be3-1353fdbd4a8f" />
+
+
 ## What a Day Looks Like
 
 **Morning** — You open your vault and say `/wz:ping`. Wazeer reads your boards, shows what changed, flags anything overdue, and helps you decide what to focus on today.
